@@ -16,4 +16,4 @@ RUN npm install
 COPY . .
 RUN npm run build
 EXPOSE 3005
-CMD [ "npm", "start", "-p", "3006" ]
+CMD [ "npm", "start", "-p", "3005" ]

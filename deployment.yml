@@ -18,7 +18,7 @@ spec:
       - name: react
         image: devbreed/next-app:latest
         ports:
-        - containerPort: 3000
+        - containerPort: 3005
 ---
 apiVersion: v1
 kind: Service
