@@ -29,5 +29,7 @@ spec:
   selector:
     app: next
   ports:
-    - port: 3005
+    - protocol: TCP
+      port: 3005
+      targetPort: 3005
       nodePort: 31100
