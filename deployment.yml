@@ -8,14 +8,14 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: react
+      app: next
   template:
     metadata:
       labels:
-        app: react
+        app: next
     spec:
       containers:
-      - name: react
+      - name: next
         image: devbreed/next-app:latest
         ports:
         - containerPort: 3005
