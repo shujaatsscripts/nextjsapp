@@ -27,10 +27,7 @@ metadata:
 spec:
   type: NodePort
   selector:
-    app.kubernetes.io/name: next
+    app: next
   ports:
-    - protocol: TCP
-      port: 3005
-      targetPort: 3005
-
+    - port: 3005
       nodePort: 31100
