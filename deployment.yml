@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: next
-        image: devbreed/next-app:latest
+        image: {{NEXTIMAGE}}
         ports:
         - containerPort: 3005
 ---

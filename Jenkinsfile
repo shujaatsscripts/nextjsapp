@@ -41,24 +41,26 @@ spec:
     }
     environment{
         dockerhub=credentials('Dockerhub')
+        
     }
     
     stages {
         stage('Checkout SCM') {
             steps {
-                sh 'git clone https://github.com/shujaatsscripts/nextjsapp.git .'
+                sh 'git clone https://github.com/shujaatsscripts/nextjsapp.git'
             }
         }
         stage('Push Image') {
             steps {
-                sh 'docker build . -t devbreed/next-app:latest'
-                sh 'echo $dockerhub_PSW | docker login -u $dockerhub_USR --password-stdin'
-                sh 'docker push devbreed/next-app:latest'
+                sh '''docker build nextjsapp/ -t devbreed/next-app:$BUILD_NUMBER'''
+                sh '''echo $dockerhub_PSW | docker login -u $dockerhub_USR --password-stdin'''
+                sh '''docker push devbreed/next-app:$BUILD_NUMBER'''
             }
         }
         stage('Deploy Pod') {
             steps {
-                sh 'kubectl apply -f deployment.yml'
+                sh '''sed -i "s|{{NEXTIMAGE}}|devbreed/next-app:$BUILD_NUMBER|" nextjsapp/deployment.yml'''
+                sh '''kubectl apply -f nextjsapp/deployment.yml -n jenkins'''
             }
         }
     }
