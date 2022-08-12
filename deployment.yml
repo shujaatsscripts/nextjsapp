@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: next
-        image: {{NEXTIMAGE}}
+        image: nextimage
         ports:
         - containerPort: 3005
 ---
